@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Area Chart Example</title>
+  <!-- Include Chart.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Create a canvas element to render the chart -->
+  <canvas id="areaChart" width="600" height="400"></canvas>
+
+  <script>
+    // Sample data for the Area Chart
+    var data = {
+      labels: ["January", "February", "March", "April", "May"],
+      datasets: [{
+        label: "Monthly Sales",
+        backgroundColor: "rgba(75, 192, 192, 0.2)", // Area fill color
+        borderColor: "rgba(75, 192, 192, 1)", // Line color
+        borderWidth: 2, // Line width
+        data: [1500, 2200, 1800, 2500, 2000],
+        fill: true // Fill the area under the line
+      }]
+    };
+
+    // Configuration options for the chart
+    var options = {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        x: {
+          type: 'category',
+          position: 'bottom'
+        },
+        y: {
+          beginAtZero: true
+        }
+      }
+    };
+
+    // Get the canvas element
+    var ctx = document.getElementById('areaChart').getContext('2d');
+
+    // Create the Area Chart
+    var myChart = new Chart(ctx, {
+      type: 'line', // Use 'line' type for Area Chart
+      data: data,
+      options: options
+    });
+  </script>
+</body>
+</html>
